@@ -1,6 +1,7 @@
 <?php namespace Syscover\Comunik\Models;
 
 use Syscover\Admin\Models\Country;
+use Syscover\Admin\Models\Lang;
 use Syscover\Core\Models\CoreModel;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,9 +27,14 @@ class Contact extends CoreModel
         return Validator::make($data, static::$rules);
 	}
 
-    public function list()
+    public function collection()
     {
-        return $this->belongsTo(ListModel::class, 'list_id');
+        return $this->belongsTo(Collection::class, 'list_id');
+    }
+
+    public function lang()
+    {
+        return $this->belongsTo(Lang::class, 'id', 'lang_id');
     }
 
     public function countries()

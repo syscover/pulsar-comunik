@@ -4,13 +4,13 @@ use Syscover\Core\Models\CoreModel;
 use Illuminate\Support\Facades\Validator;
 
 /**
- * Class ListModel
+ * Class Collection
  * @package Syscover\Comunik\Models
  */
 
-class ListModel extends CoreModel
+class Collection extends CoreModel
 {
-	protected $table        = 'comunik_list';
+	protected $table        = 'comunik_collection';
     protected $fillable     = ['id', 'name', 'field_group_id'];
     private static $rules   = [
         'name' => 'required'

@@ -12,21 +12,21 @@ class ComunikCreateTableList extends Migration {
      */
     public function up()
     {
-        if(! Schema::hasTable('comunik_list'))
+        if(! Schema::hasTable('comunik_collection'))
         {
-            Schema::create('comunik_list', function (Blueprint $table) {
+            Schema::create('comunik_collection', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
 
                 $table->increments('id');
                 $table->string('name');
 
-                // customs fields
+                // customs fields for contacts
                 $table->integer('field_group_id')->unsigned()->nullable();
 
                 $table->timestamps();
                 $table->softDeletes();
 
-                $table->foreign('field_group_id', 'fk01_comunik_list')
+                $table->foreign('field_group_id', 'fk01_comunik_collection')
                     ->references('id')
                     ->on('admin_field_group')
                     ->onDelete('restrict')
@@ -42,6 +42,6 @@ class ComunikCreateTableList extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('comunik_list');
+        Schema::dropIfExists('comunik_collection');
     }
 }
